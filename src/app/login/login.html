@@ -1,0 +1,27 @@
+<div layout="column" layout-fill layout-margin layout-align="center center">
+    <md-content layout="column" layout-padding class="md-whiteframe-z1 borders">
+        <form name="projectForm" method="POST">
+            <div ng-if="error" class="login-error">{{error}}</div>
+            <md-input-container>
+                <label>Usuario</label>
+                <input required name="username" ng-value="" ng-model="form.username">
+
+                <div ng-messages="projectForm.username.$error" ng-if="projectForm.username.$touched">
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input required name="password" type="password" ng-value="" ng-model="form.password">
+
+                <div ng-messages="projectForm.password.$error" ng-if="projectForm.password.$touched">
+                    <div ng-message="required">Campo requerido.</div>
+                </div>
+            </md-input-container>
+            <md-input-container layout-align="center center">
+                <md-button class="md-raised center md-primary">Login</md-button>
+            </md-input-container>
+        </form>
+    </md-content>
+</div>
+

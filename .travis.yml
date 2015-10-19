@@ -1,0 +1,33 @@
+languaje: node_js
+
+node_js:
+- '0.10'
+
+before_install:
+- npm install -g npm
+- npm install -g gulp
+- npm install -g bower
+
+install:
+- npm install
+- bower install
+
+script: gulp build
+
+before_deploy:
+- git config --global user.email 'bot@travis-ci.com'
+- git config --global user.name 'Bot - Travis CI'
+- git checkout $TRAVIS_BRANCH
+- git add -f dist/*
+- git add -f bower_components/*
+- git commit -am '[Travis] Deploy'
+
+deploy:
+  provider: openshift
+  user: ja.rodriguez.vazquez@gmail.com
+  password:
+    secure: tjO83tWKpVbYNYVUQz5uz7Q0iLZheYf8YJal8ktXtFVPg6HUBir7t34WEmifW0HeVGeCZ2EubQD+70GBf6dSo22nwblv3C6YG8/IX6/5rYQHGo382kmAuEolDhuAGhTg12hOBH7gmOo985AkOAfVOKNCtfBsqf29t6Eh29LLbYGP5foSJ31wpu/RGrQ+CmW1upTGo30OgAocc103oltgAB9AQ7AoEX7juM0tp99akjOywl2o6zXDn4INqdFad3DRc65B8vIyZXwckA7R9hS5jfA5IK6OXD4PgrNJih1co0Js6Iw70AKS1PErxjdCFaRakUbOLOMPSNtRoLjxvExPRw3Wh3RY5EcjKFAKHG+89ujTI7GJ+eGPYNgByMiWXOaJtYw8l+f8hak1syuZ6OdN7wNQ6c097adn5cx6gdDegUyOVzy5X2tNnfMUsj44+sk0XhzHzHtRvuEhNYePFZo3qdxs2rgB/82X19cOvesoGMMOvUtJRxu5OdU2kL78SLWeR90ui7KrqixqiQW8rZW4/RJWRPt+ke5jTpoVsQWNEMoHixNUstxplQJjeet82lttyUws2Zqx7FWL8cAomK4/xFkv0Yakv/gTT2ivzjt9Wji0S+JDfhd4Y9gsJWmgz+j+Qtpn63/7r7PHZz/HZalvbAglYB8yCwzTchWB1YyKI8I=
+  app: frontend
+  domain: tpprofesional
+  on:
+    repo: sebastianmetta/tpProfesional-frontend

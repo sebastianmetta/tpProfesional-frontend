@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angular', [
+angular.module('myApp', [
     'ngAnimate',
     'ngCookies',
     'ngSanitize',
@@ -13,6 +13,10 @@ angular.module('angular', [
             .when('/', {
                 templateUrl: 'app/login/login.html',
                 controller: 'LoginCtrl'
+            })
+            .when('/main', {
+                templateUrl: 'app/main/main.html',
+                controller: 'MainCtrl'
             })
             .when('/login', {
                 templateUrl: 'app/login/login.html',

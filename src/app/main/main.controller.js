@@ -1,6 +1,12 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('myApp')
-  .controller('MainCtrl', function () {
+    angular
+      .module('myApp')
+      .controller('MainCtrl', MainController);
+        
+      MainController.$inject = [];
 
-});
+      function MainController() {
+      }
+})();

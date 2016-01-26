@@ -29,6 +29,10 @@
                     );
                 }
             };
+
+            $scope.registrarse = function () {
+                $location.url('/registro');
+            };
         }
 })();
 

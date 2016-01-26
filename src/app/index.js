@@ -22,6 +22,10 @@ angular.module('myApp', [
                 templateUrl: 'app/login/login.html',
                 controller: 'LoginCtrl'
             })
+            .when('/registro', {
+                templateUrl: 'app/registro/registro.html',
+                controller: 'RegistroCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

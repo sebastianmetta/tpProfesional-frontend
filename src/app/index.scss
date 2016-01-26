@@ -8,16 +8,6 @@ html {
   flex-direction: row;
 }
 
-.borders {
-  border-radius: 4%;
-}
-
-.login-error {
-  color: rgb(244, 67, 54);
-  font-size: 12px;
-  line-height: 24px;
-}
-
 header {
   .md-button {
     &.md-default-theme {
@@ -33,11 +23,10 @@ header {
   background-color: rgba(158, 158, 158, 0.2);
 }
 
-.md-header-items-container {
-  padding-left: 285px;
-}
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */
 // injector
 // endinjector
+
+

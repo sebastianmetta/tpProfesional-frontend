@@ -4,6 +4,7 @@ node_js:
 - '0.10'
 
 before_install:
+- rm -r bower_components/
 - npm install -g npm
 - npm install -g gulp
 - npm install -g bower

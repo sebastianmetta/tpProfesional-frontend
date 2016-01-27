@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-      .module('myApp')
-      .controller('MainCtrl', MainController);
+    	.module('myApp')
+      	.controller('MainCtrl', MainController);
         
-      MainController.$inject = [];
+      	MainController.$inject = [];
 
-      function MainController() {
-      }
+      	function MainController() {
+      	}
 })();

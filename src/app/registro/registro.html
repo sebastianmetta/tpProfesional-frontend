@@ -1,77 +1,101 @@
-<div layout="column" ng-cloak class="md-inline-form">
-  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
-    <div>
-      <md-input-container>
-        <label>Title</label>
-        <input ng-model="user.title">
-      </md-input-container>
-      <md-input-container>
-        <label>Email</label>
-        <input ng-model="user.email" type="email">
-      </md-input-container>
-    </div>
+<div layout="column" layout-padding ng-cloak>
+  <md-content> 
+    <md-toolbar class="md-primary md-hue-1">
+      <div class="md-toolbar-tools">
+        <h2>
+          <md-icon md-svg-icon="assets/icons/hospital.svg" style="color: black;"></md-icon> 
+          <span>Aplication Name</span>
+        </h2>
+      </div>
+    </md-toolbar>
   </md-content>
-  <md-content layout-padding>
-    <div>
-      <form name="userForm">
-        <div layout-gt-xs="row">
-          <md-input-container class="md-block" flex-gt-xs>
-            <label>Company (Disabled)</label>
-            <input ng-model="user.company" disabled>
-          </md-input-container>
-          <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date">
-          </md-datepicker>
+
+  <md-content layout="column" layout-padding class="md-whiteframe-z1 borders"> 
+    <form name="projectForm" layout="column" method="POST">
+     
+      <md-input-container>
+        <label>Name</label>
+        <!--<md-icon md-svg-src="assets/icons/person.svg" style="color: teal"></md-icon> -->
+        <input md-maxlength="20" required name="name" ng-value="" ng-model="form.name" />
+        <div class="hint" ng-if="!showHints && !projectForm.name.$touched">Write your Name.</div>
+        <div ng-messages="projectForm.name.$error" ng-if="!showHints"> 
+          <div ng-message="required" ng-if="projectForm.name.$touched">Name is required.</div>
+          <div ng-message="md-maxlength">The Name has to be less than 20 characters long.</div>
         </div>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>First name</label>
-            <input ng-model="user.firstName">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Last Name</label>
-            <input ng-model="theMax">
-          </md-input-container>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Last Name</label>
+        <input md-maxlength="20" required name="lastName" ng-value="" ng-model="form.lastName" />
+        <div class="hint" ng-if="!showHints && !projectForm.lastName.$touched">Write your Last Name</div>
+          <div ng-messages="projectForm.lastName.$error" ng-if="!showHints"> 
+          <div ng-message="required" ng-if="projectForm.lastName.$touched">Last Name is required.</div>
+            <div ng-message="md-maxlength">The Last Name has to be less than 20 characters long.</div>
+          </div>
+      </md-input-container>
+       
+      <md-input-container >
+        <label>User Name</label>
+        <input md-maxlength="10" required name="userName" ng-value="" ng-model="form.userName" />
+        <div class="hint" ng-if="!showHints && !projectForm.userName.$touched">Write your UserName</div>
+        <div ng-messages="projectForm.userName.$error" ng-if="!showHints">
+        <div ng-message="required" ng-if="projectForm.userName.$touched">UserName is required.</div>
+          <div ng-message="md-maxlength">The UserName has to be less than 10 characters long.</div>
         </div>
-        <md-input-container class="md-block">
-          <label>Address</label>
-          <input ng-model="user.address">
-        </md-input-container>
-        <md-input-container md-no-float class="md-block">
-          <input ng-model="user.address2" placeholder="Address 2">
-        </md-input-container>
-        <div layout-gt-sm="row">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>City</label>
-            <input ng-model="user.city">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>State</label>
-            <md-select ng-model="user.state">
-              <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                {{state.abbrev}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>Postal Code</label>
-            <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
-                   required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-            <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
-              <div ng-message="required" class="my-message">You must supply a postal code.</div>
-              <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-                code.
-              </div>
-              <div ng-message="md-maxlength" class="my-message">
-                Don't use the long version silly...we don't need to be that specific...
-              </div>
-            </div>
-          </md-input-container>
+       </md-input-container>
+        
+      <md-input-container >
+        <label>Password</label>
+        <input  required name="password" ng-value="" type="password" ng-model="form.password" />
+        <div class="hint" ng-if="!showHints && !projectForm.password.$touched">Write your Password</div>
+        <div ng-messages="projectForm.password.$error" ng-if="!showHints">
+          <div ng-message="required" ng-if="projectForm.password.$touched">Password is required.</div>
         </div>
-        <md-input-container class="md-block">
-          <label>Biography</label>
-          <textarea ng-model="user.biography" columns="1" md-maxlength="150" rows="5"></textarea>
-        </md-input-container>
-      </form>
-    </div>
+      </md-input-container>
+ 
+      <md-input-container >
+        <label>Confirm Password</label>
+        <input required name="confirmPassword" ng-value="" type="password" ng-model="form.confirmPassword" />
+        <div class="hint" ng-if="!showHints && !projectForm.confirmPassword.$touched">Confirm your Password</div>
+        <div ng-messages="projectForm.confirmPassword.$error" ng-if="!showHints">
+          <div ng-message="required" ng-if="projectForm.confirmPassword.$touched">Password does not match.</div>
+        </div>
+      </md-input-container>
+    
+      <md-input-container>
+        <label>DNI</label>
+        <input required name="dni" ng-value="" ng-model="form.dni" ng-pattern="/^[0-9]{2}.[0-9]{3}.[0-9]{3}$/"/>
+        <div class="hint" ng-if="!showHints && !projectForm.dni.$touched" >Write your DNI - ##.###.###</div>
+        <div ng-messages="projectForm.dni.$error" ng-if="!showHints">
+          <div ng-message-exp="['required', 'pattern']">Please enter a valid DNI.</div>             
+        </div>
+      </md-input-container>
+
+      <md-input-container >
+        <label>Phone Number</label>
+        <input required name="phoneNumber" ng-value="" ng-model="form.phoneNumber" ng-pattern="/^[0-9]{3}[0-9]{4}-[0-9]{4}$/"/>
+        <div class="hint" ng-if="!showHints && !projectForm.dni.$touched">Write your Phone Number - (###)####-####</div>
+        <div ng-messages="projectForm.phoneNumber.$error" ng-if="!showHints">
+          <div ng-message-exp="['required','pattern']">Please enter a valid Phone Number.</div>             
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Role</label>
+        <md-select ng-model="form.role" >
+          <md-option class="selectFontSize" ng-repeat="role in roles" value="{{role.abbrev}}">{{role.abbrev}}</md-option>
+        </md-select>
+      </md-input-container> 
+
+      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button class="md-raised md-primary" ng-click="backToLogin()" ng-show="isAvailable">Back</md-button>
+        <md-button  data-ng-attr-id="backBtnId" class="md-raised md-primary" ng-click="backToLogin()" ng-show="!isAvailable">Back To Login</md-button> 
+        <md-button class="md-raised md-primary" ng-click="submit()" ng-disabled="false" ng-show="isAvailable">Submit</md-button> 
+      </section>
+
+      <div ng-if="error" align= "center" class="registration-error" ng-show=errorFlag>{{error}}</div>
+      <div ng-if="error" align= "center" class="registration-succed" ng-show=!errorFlag >{{message}}</div> 
+      <div 
+    </form>
   </md-content>
 </div>

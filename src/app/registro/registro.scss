@@ -1,2 +1,64 @@
-.inputdemoBasicUsage .md-datepicker-button {
-  width: 36px; }
+md-input-container {
+  margin-right: 10px;
+  font-size: 12px; 
+}
+
+section {
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; 
+}
+
+section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; 
+}
+
+md-option.selectFontSize .md-text {
+    font-size: 12px;  
+}
+
+.hint {
+  /* Position the hint */
+  position: absolute;
+  left: 2px;
+  right: auto;
+  bottom: 7px;
+  /* Copy styles from ng-messages */
+  font-size: 12px;
+  line-height: 14px;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+  /* Set our own color */
+  color: grey; 
+}
+
+.hint.ng-hide,
+.hint.ng-enter,
+.hint.ng-leave.ng-leave-active {
+   bottom: 26px;
+   opacity: 0; 
+}
+.hint.ng-leave,
+.hint.ng-enter.ng-enter-active {
+   bottom: 7px;
+   opacity: 1;
+}
+
+.registration-error {
+  color: rgb(244, 67, 54);
+  font-size: 15px;
+  line-height: 24px;
+  align: center;
+}
+
+.registration-succed {
+  color: rgb(50, 205, 50);
+  font-size: 15px;
+  line-height: 24px;
+  align: center;
+
+}
+

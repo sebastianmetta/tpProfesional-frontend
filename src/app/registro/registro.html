@@ -36,7 +36,7 @@
        
       <md-input-container >
         <label>User Name</label>
-        <input md-maxlength="10" required name="userName" ng-value="" ng-model="form.userName" />
+        <input md-maxlength="10" required name="userName" ng-value="" ng-model="form.username" />
         <div class="hint" ng-if="!showHints && !projectForm.userName.$touched">Ingresá tu UserName.</div>
         <div ng-messages="projectForm.userName.$error" ng-if="!showHints">
         <div ng-message="required" ng-if="projectForm.userName.$touched">UserName es requerido.</div>
@@ -65,7 +65,7 @@
       <md-input-container>
         <label>DNI</label>
         <input required name="dni" ng-value="" ng-model="form.dni" ng-pattern="/^[0-9]{2}.[0-9]{3}.[0-9]{3}$/"/>
-        <div class="hint" ng-if="!showHints && !projectForm.dni.$touched">Ingresá tu - ##.###.###</div>
+        <div class="hint" ng-if="!showHints && !projectForm.dni.$touched">Ingresá tu DNI - ##.###.###</div>
         <div ng-messages="projectForm.dni.$error" ng-if="!showHints">
           <div ng-message-exp="['required', 'pattern']">Por favor ingresá un DNI válido.</div>             
         </div>
@@ -89,17 +89,18 @@
         </div>
       </md-input-container>
 
-      <md-input-container>
+     <md-input-container>
         <label>Role</label>
-        <md-select ng-model="form.role" >
-          <md-option class="selectFontSize" ng-repeat="role in roles" value="{{role.abbrev}}">{{role.abbrev}}</md-option>
+        <md-select ng-model="form.roleId" >
+          <md-option class="selectFontSize" value="">Please Select an Option</md-option>
+          <md-option class="selectFontSize" ng-repeat="role in roles" value="{{role.roleId}}">{{role.roleId}}</md-option>
         </md-select>
       </md-input-container> 
 
       <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
         <md-button class="md-raised md-primary" ng-click="backToLogin()" ng-show="isAvailable">Back</md-button>
         <md-button  data-ng-attr-id="backBtnId" class="md-raised md-primary" ng-click="backToLogin()" ng-show="!isAvailable">Back To Login</md-button> 
-        <md-button class="md-raised md-primary" ng-click="submit()" ng-disabled="false" ng-show="isAvailable">Submit</md-button> 
+        <md-button class="md-raised md-primary" ng-click="submit()" ng-disabled="disabled" ng-show="isAvailable">Submit</md-button> 
       </section>
 
       <div ng-if="error" align= "center" class="registration-error" ng-show=errorFlag>{{error}}</div>

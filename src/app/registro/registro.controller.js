@@ -10,7 +10,7 @@
 
         RegistroController.$inject = ['$scope', '$location','Registration','Role'];
 
-        function RegistroController($scope,$location,Registration) {
+        function RegistroController($scope,$location,Registration,Role) {
       		$scope.form = {
               username: '',
               email: '',
@@ -26,19 +26,11 @@
           $scope.isAvailable = true;
           
           $scope.disabled = false;
-          /*$scope.roles = ('R1 R2 R3 R4 JEFE_RESIDENTES JEFE_PLANTA CONSULTOR_EXTERNO').split(' ').map(function (role) {
-              return {abbrev: role};
-          });*/
           
-          //TODO obtner los roles consumiendo el servicio de getRol
-          $scope.roles = ('1 2 3 4 5 6 7 8').split(' ').map(function (role) {
-              return {roleId: role};
-          });
-          
-          /*$scope.roles = Role.getRoles("",
+          $scope.roles = Role.getRoles("",
             
                 function() {
-               
+                  console.log("Los roles han sido obtenidos con exito");
                 },
 
                 function() {
@@ -46,8 +38,6 @@
                   
                 }
               );
-          */
-
           /*var isOk = function() {
             if($scope.form.userName.length !== 0 && $scope.form.email.length && $scope.form.password.length !== 0 && $scope.form.nombreYApellido.length !== 0 && $scope.form.dni.length !== 0 && $scope.form.telefono !== 0) {
                 return true;
@@ -56,10 +46,6 @@
             }
           };*/
  
-          /*if ($scope.form.$valid) {
-            $scope.disabled = false;
-          };*/
-
           $scope.backToLogin = function() {
             $location.url('/login');
           };
@@ -70,10 +56,10 @@
           //TODO: Make all the form smaller
           //TODO: FIX delay to hide the hint message and hide it when you have maxlength
           //TODO: Validate the whole fomr with $valid and enable the button
+          //TODO: Ordenar la lista de roles
           $scope.submit = function() {        
 
             //if(isOk){
-
               Registration.register($scope.form,
             
                 function() {

@@ -23,17 +23,7 @@
           <div ng-message="md-maxlength">El Nombre y Apellido debe tener como máximo 50 caracteres de longitud.</div>
         </div>
       </md-input-container>
-
-<!--      <md-input-container>
-        <label>Last Name</label>
-        <input md-maxlength="20" required name="lastName" ng-value="" ng-model="form.lastName" />
-        <div class="hint" ng-if="!showHints && !projectForm.lastName.$touched">Write your Last Name</div>
-          <div ng-messages="projectForm.lastName.$error" ng-if="!showHints"> 
-          <div ng-message="required" ng-if="projectForm.lastName.$touched">Last Name is required.</div>
-            <div ng-message="md-maxlength">The Last Name has to be less than 20 characters long.</div>
-          </div>
-      </md-input-container>-->
-       
+     
       <md-input-container >
         <label>User Name</label>
         <input md-maxlength="10" required name="userName" ng-value="" ng-model="form.username" />
@@ -91,21 +81,21 @@
 
      <md-input-container>
         <label>Role</label>
-        <md-select ng-model="form.roleId" >
-          <md-option class="selectFontSize" value="">Please Select an Option</md-option>
-          <md-option class="selectFontSize" ng-repeat="role in roles" value="{{role.roleId}}">{{role.roleId}}</md-option>
+        <md-select ng-model="form.roleId">
+          <md-option class="selectFontSize" value="">Seleccione una Opción</md-option>
+          <md-option class="selectFontSize" ng-repeat="role in roles" value="{{role.id}}">{{role.descripcion}}</md-option>
         </md-select>
-      </md-input-container> 
+     </md-input-container>
 
-      <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
         <md-button class="md-raised md-primary" ng-click="backToLogin()" ng-show="isAvailable">Back</md-button>
         <md-button  data-ng-attr-id="backBtnId" class="md-raised md-primary" ng-click="backToLogin()" ng-show="!isAvailable">Back To Login</md-button> 
         <md-button class="md-raised md-primary" ng-click="submit()" ng-disabled="disabled" ng-show="isAvailable">Submit</md-button> 
-      </section>
+     </section>
 
       <div ng-if="error" align= "center" class="registration-error" ng-show=errorFlag>{{error}}</div>
-      <div ng-if="error" align= "center" class="registration-succed" ng-show=!errorFlag >{{message}}</div> 
-      <div 
+      <div ng-if="error" align= "center" class="registration-succed" ng-show=!errorFlag >{{message}}</div>
+    
     </form>
   </md-content>
 </div>

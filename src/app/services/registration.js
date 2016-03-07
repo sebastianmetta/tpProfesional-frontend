@@ -8,7 +8,7 @@
 	Registration.$inject = ['$resource', 'Services'];
 
 	function Registration($resource, Services) {
-        return $resource(Services.url + 'api/registro', {},
+        return $resource(Services.url + '/api/registro', {},
             {
                 register: {
                     method: 'POST',

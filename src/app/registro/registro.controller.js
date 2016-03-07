@@ -57,6 +57,7 @@
           //TODO: FIX delay to hide the hint message and hide it when you have maxlength
           //TODO: Validate the whole fomr with $valid and enable the button
           //TODO: Ordenar la lista de roles
+          
           $scope.submit = function() {        
 
             //if(isOk){
@@ -72,7 +73,6 @@
                   $scope.errorFlag = true;
                 }
               );
-
             //}
           };
         }                  

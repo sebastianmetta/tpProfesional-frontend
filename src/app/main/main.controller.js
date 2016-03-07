@@ -5,8 +5,41 @@
     	.module('myApp')
       	.controller('MainCtrl', MainController);
         
-      	MainController.$inject = [];
+      	MainController.$inject = ['$scope', '$mdDialog', '$mdMedia'];
 
-      	function MainController() {
+      	function MainController($scope, $mdDialog, $mdMedia) {
+      		$scope.showBusquedaPacienteModal = function(ev) {
+    			var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+		    	$mdDialog.show({
+		      		controller: DialogController,
+				    templateUrl: 'app/main/busquedaPaciente.tmpl.html',
+				    parent: angular.element(document.body),
+				    targetEvent: ev,
+				    clickOutsideToClose:true,
+				    fullscreen: useFullScreen
+		    	})
+    			.then(function(answer) {
+      			}, function() {
+      			});
+			    $scope.$watch(function() {
+			      return $mdMedia('xs') || $mdMedia('sm');
+			    }, function(wantsFullScreen) {
+			      $scope.customFullscreen = (wantsFullScreen === true);
+			    });
+			};
+
+			function DialogController($scope, $mdDialog) {
+  				$scope.hide = function() {
+    				$mdDialog.hide();
+  				};
+			
+				$scope.cancel = function() {
+			    	$mdDialog.cancel();
+			  	};
+			  	
+			  	$scope.answer = function(answer) {
+			    	$mdDialog.hide(answer);
+			  	};
+			}
       	}
 })();

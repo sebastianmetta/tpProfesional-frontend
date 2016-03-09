@@ -19,8 +19,8 @@
                 if ($scope.form.username.length !== 0 && $scope.form.password.length !== 0) {
                     Authentication.authenticate($scope.form,
                         function(data) {
-                            $cookies.username = data.username;
-                            $cookies.token = data.token;
+                            $cookies.put('username', data.username);
+                            $cookies.put('token', data.token);
                             $location.url('/main');
                         },
                         function() {

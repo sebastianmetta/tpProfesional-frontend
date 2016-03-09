@@ -5,10 +5,19 @@
     	.module('myApp')
       	.controller('MainCtrl', MainController);
         
-      	MainController.$inject = ['$scope', '$mdDialog', '$mdMedia'];
+      	MainController.$inject = ['$scope', '$mdDialog', '$mdMedia', 'Paciente'];
 
-      	function MainController($scope, $mdDialog, $mdMedia) {
+      	function MainController($scope, $mdDialog, $mdMedia, Paciente) {
       		$scope.contentUrl = '';
+
+      		$scope.altaPaciente = {
+                dni: '23.123.681',
+                nombreYApellido: 'javier',
+                direccion: 'fdff',
+                telefono: '4578-8652',
+                antecedentesFamiliares: 'No tiene',
+                observaciones:'ninguna'
+            };
 
       		$scope.showBusquedaPacienteModal = function(ev) {
     			var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
@@ -47,6 +56,15 @@
 			$scope.changeView = function (view) {
     			$scope.contentUrl = 'app/main/' + view + '.tmpl.html';
 			}
+
+			$scope.crearPaciente = function () {
+                Paciente.altaPaciente($scope.altaPaciente,
+                    function(data) {
+                    },
+                    function() {
+                    }
+                );
+            };
 
       	}
 })();

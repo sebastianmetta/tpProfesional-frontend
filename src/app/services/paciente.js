@@ -14,7 +14,7 @@
                     method: 'POST',
                     headers : {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + $cookies.get("token") 
+                        'Authorization': 'Bearer ' + $cookies.get('token') 
                     }
                 }
             }

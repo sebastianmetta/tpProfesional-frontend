@@ -1,6 +1,45 @@
 <h2>Alta Paciente</h2>
 
-<md-button class="md-raised center md-primary" ng-click="crearPaciente()">Crear Paciente</md-button>
+<md-content layout="column" layout-padding class="md-whiteframe-z1 borders">
+    <form name="projectForm" layout="column" method="POST">
+        <md-input-container>
+            <label>dni</label>
+            <input required name="dni" ng-value="" ng-model="altaPaciente.dni">
+            <div ng-messages="projectForm.dni.$error" ng-if="projectForm.dni.$touched">
+                <div ng-message="required">Campo requerido.</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Nombre y Apellido</label>
+            <input required name="nombreYApellido" ng-value="" ng-model="altaPaciente.nombreYApellido">
+            <div ng-messages="projectForm.nombreYApellido.$error" ng-if="projectForm.nombreYApellido.$touched">
+                <div ng-message="required">Campo requerido.</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Dirección</label>
+            <input required name="direccion" ng-value="" ng-model="altaPaciente.direccion">
+        </md-input-container>
+        <md-input-container>
+            <label>Teléfono</label>
+            <input required name="telefono" ng-value="" ng-model="altaPaciente.telefono">
+        </md-input-container>
+        <md-input-container>
+            <label>Antecedentes Familiares</label>
+            <input required name="antecedentesFamiliares" ng-value="" ng-model="altaPaciente.antecedentesFamiliares">
+        </md-input-container>
+        <md-input-container>
+            <label>Observaciones</label>
+            <input required name="observaciones" ng-value="" ng-model="altaPaciente.observaciones">
+        </md-input-container>
+        <md-input-container layout-align="center center">
+            <md-button class="md-raised center md-primary" ng-click="crearPaciente()">Crear Paciente</md-button>
+        </md-input-container>
+        <div ng-if="altaPacienteError" class="login-error">{{altaPacienteError}}</div>
+    </form>
+</md-content>
+
+
 
 
 

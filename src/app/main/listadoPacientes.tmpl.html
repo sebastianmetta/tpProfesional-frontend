@@ -1,0 +1,23 @@
+<div ng-controller="ListadoPacientesController">
+<h2>Listado Pacientes</h2>
+<md-content layout-fill layout-padding flex md-scroll-y>
+    <md-list>
+        <md-list-item ng-repeat="paciente in pacientes">
+            <div class="md-list-item-text" layout="horizontal">
+                <h4>{{paciente.dni}}</h4>
+                <h4>{{paciente.nombreYApellido}}</h4>
+                <h4>{{paciente.direccion}}</h4>
+                <h4>{{paciente.telefono}}</h4>
+                <h4>{{paciente.antecedentesFamiliares}}</h4>
+            </div>
+            <md-divider inset></md-divider>
+        </md-list-item>
+    </md-list>
+</md-content>
+</div>
+
+
+
+
+
+

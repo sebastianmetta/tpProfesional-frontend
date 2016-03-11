@@ -16,6 +16,14 @@
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + $cookies.get('token') 
                     }
+                },
+                listadoPacientes: {
+                    method: 'GET',
+                    isArray: true,
+                    headers : {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + $cookies.get('token') 
+                    }
                 }
             }
         );

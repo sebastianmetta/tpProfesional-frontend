@@ -22,16 +22,16 @@
                 <md-tooltip md-direction="top" md-visible="tooltipVisible">Alta Paciente</md-tooltip>
                 <md-icon md-svg-src="assets/icons/alta_paciente.svg" aria-label="Alta Paciente"></md-icon>
               </md-button>
-              <md-button aria-label="Modificacion Paciente" class="md-fab md-raised md-mini">
-                <md-tooltip md-direction="top" md-visible="tooltipVisible">Modificacion Paciente</md-tooltip>
-                <md-icon md-svg-src="assets/icons/modificacion_paciente.svg" aria-label="Modificacion Paciente"></md-icon>
+              <md-button aria-label="Listado Pacientes" class="md-fab md-raised md-mini" ng-click="changeView('listadoPacientes')">
+                <md-tooltip md-direction="top" md-visible="tooltipVisible">Listado Pacientes</md-tooltip>
+                <md-icon md-svg-src="assets/icons/modificacion_paciente.svg" aria-label="Listado Pacientes"></md-icon>
               </md-button>
             </md-fab-actions>
           </md-fab-speed-dial>
         </div>
       </md-content>
     </md-sidenav>
-    <md-content ng-include="contentUrl"></md-content>
+    <md-content ng-include="contentUrl" class="panelDinamico"></md-content>
   </div>
 </div>
 

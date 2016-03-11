@@ -4,7 +4,7 @@
       <div class="md-toolbar-tools">
         <h2>Busqueda Paciente</h2>
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
+        <md-button class="md-icon-button" ng-click="cancelar()">
           Close dialog
         </md-button>
       </div>
@@ -13,17 +13,26 @@
       <div class="md-dialog-content">
         <h2>Buscar el paciente</h2>
       </div>
+      <md-input-container>
+        <label>Usuario</label>
+        <input required name="username" ng-value="">
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input required name="password" type="password" ng-value="">
+      </md-input-container>
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button ng-click="answer('not useful')">
-       Not Useful
+      <md-button ng-click="cancelar()">
+       Cancelar
       </md-button>
-      <md-button ng-click="answer('useful')" style="margin-right:20px;">
-        Useful
+      <md-button ng-click="buscarPaciente()" style="margin-right:20px;">
+        Buscar Paciente
       </md-button>
     </md-dialog-actions>
   </form>
+  <div ng-show="mostrarBusqueda" class="ng-hide">Resultado Busqueda</div>
 </md-dialog>
 
 

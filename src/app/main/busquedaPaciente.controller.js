@@ -8,16 +8,18 @@
       BusquedaPacienteController.$inject = ['$scope', '$mdDialog'];
 
       function BusquedaPacienteController($scope, $mdDialog) {
+        $scope.mostrarBusqueda = false;
+        
         $scope.hide = function() {
           $mdDialog.hide();
         };
       
-        $scope.cancel = function() {
+        $scope.cancelar = function() {
           $mdDialog.cancel();
         };
           
-        $scope.answer = function(answer) {
-          $mdDialog.hide(answer);
+        $scope.buscarPaciente = function() {
+          $scope.mostrarBusqueda = true;
         };
       }
 })();

@@ -5,10 +5,15 @@
     	.module('myApp')
       .controller('BusquedaPacienteController', BusquedaPacienteController);
         
-      BusquedaPacienteController.$inject = ['$scope', '$mdDialog'];
+      BusquedaPacienteController.$inject = ['$scope', '$mdDialog', 'Paciente'];
 
-      function BusquedaPacienteController($scope, $mdDialog) {
+      function BusquedaPacienteController($scope, $mdDialog, Paciente) {
         $scope.mostrarBusqueda = false;
+
+        $scope.filtroPaciente = {
+          dni: '',
+          nombreYApellido: ''
+        };
         
         $scope.hide = function() {
           $mdDialog.hide();
@@ -18,8 +23,15 @@
           $mdDialog.cancel();
         };
           
-        $scope.buscarPaciente = function() {
-          $scope.mostrarBusqueda = true;
+        $scope.buscarPaciente = function () {
+          Paciente.filtroPacientes($scope.filtroPaciente,
+            function(data) {
+              $scope.mostrarBusqueda = true;
+              $scope.pacientesFiltrados = data;
+            },
+            function() {
+            }
+          );
         };
       }
 })();

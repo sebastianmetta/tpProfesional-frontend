@@ -24,6 +24,15 @@
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer ' + $cookies.get('token') 
                     }
+                },
+                filtroPacientes: {
+                    method: 'POST',
+                    url: Services.url + 'api/paciente/filtro',
+                    isArray: true,
+                    headers : {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + $cookies.get('token') 
+                    }
                 }
             }
         );

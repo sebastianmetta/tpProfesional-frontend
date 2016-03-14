@@ -14,12 +14,12 @@
         <h2>Buscar el paciente</h2>
       </div>
       <md-input-container>
-        <label>Usuario</label>
-        <input required name="username" ng-value="">
+        <label>DNI</label>
+        <input required name="dni" ng-value="">
       </md-input-container>
       <md-input-container>
-        <label>Password</label>
-        <input required name="password" type="password" ng-value="">
+        <label>Nombre Y Apellido</label>
+        <input required name="nombreYApellido" ng-value="">
       </md-input-container>
     </md-dialog-content>
     <md-dialog-actions layout="row">
@@ -32,8 +32,23 @@
       </md-button>
     </md-dialog-actions>
   </form>
-  <div ng-show="mostrarBusqueda" class="ng-hide">Resultado Busqueda</div>
+  <div ng-show="mostrarBusqueda" class="ng-hide">
+    Resultado Búsqueda
+    <md-card ng-repeat="pacienteFiltrado in pacientesFiltrados">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{pacienteFiltrado.nombreYApellido}}</span>
+          <span class="md-subhead">{{pacienteFiltrado.dni}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button>Editar</md-button>
+        <md-button>Ingresar</md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
 </md-dialog>
+
 
 
 

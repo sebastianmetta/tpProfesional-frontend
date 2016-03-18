@@ -1,18 +1,69 @@
 .login-error {
 	color: rgb(244, 67, 54);
-  	font-size: 12px;
+  	font-size: 16px;
   	line-height: 24px;
 }
 
-.borders {
-  	border-radius: 4%;
+.link-registrarse {
+	padding-top: 35px;
+	font-family: 'Roboto Slab', serif;
+
+	a:link {text-decoration:none; font-weight: bold; color:blue; }
+	a:visited {color: rgb(40,53,147);}
+	a:focus {outline: blue;}
+	a:hover {color: white;}
+	a:active {font-style: italic;}
 }
 
-.link-registrarse {
-	padding-top: 40px;
+.login-page {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+
+    background: #3ca2e0;
+    
+	text-align: center;
+	color: #fff;
+
+	padding: 3em;
+
+	h1 {
+		font-weight: 300;
+		small {
+			color: rgba(255,255,255,0.7);
+		}
+	}
+
+	.form-group {
+		padding: 10px 0;
+		margin: 15px 0;
+		label {
+			font-size: 18px;
+			color: #FFF;
+		}
+		input {
+			width : 285px;
+		}
+	}
+
+	.form-content {
+		padding: 15px 0;
+	}
+
 }
 
 .login_image {
-	padding-bottom: 20px;
-	padding-top: 20px;
+	width: 125px;
+	height: 125px;
+}
+
+.login_button {
+	border-radius: 50%;
+   	text-transform: none;
+   	font-size: 17px;
+   	background-color: royalblue;
+   	margin: 20px 8px;
 }

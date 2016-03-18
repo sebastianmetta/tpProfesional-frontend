@@ -1,28 +1,30 @@
-<div layout="column" layout-fill layout-margin layout-align="center center">
-    <img src="assets/images/logo.png" class="login_image">
-    <md-content layout="column" layout-padding class="md-whiteframe-z1 borders">
-        <form name="projectForm" method="POST">
-            <md-input-container>
-                <label>Usuario</label>
-                <input required name="username" ng-value="" ng-model="form.username">
-                <div ng-messages="projectForm.username.$error" ng-if="projectForm.username.$touched">
-                    <div ng-message="required">Campo requerido.</div>
-                </div>
-            </md-input-container>
-            <md-input-container>
-                <label>Password</label>
-                <input required name="password" type="password" ng-value="" ng-model="form.password">
-                <div ng-messages="projectForm.password.$error" ng-if="projectForm.password.$touched">
-                    <div ng-message="required">Campo requerido.</div>
-                </div>
-            </md-input-container>
-            <md-input-container layout-align="center center">
-                <md-button class="md-raised center md-primary" ng-click="submit()">Login</md-button>
-            </md-input-container>
-            <div ng-if="error" class="login-error">{{error}}</div>
-        </form>
-    </md-content>
-    <div class="link-registrarse">
-        <a href="" ng-click="registrarse()">Obtenga su cuenta</a>
-    <div/>
+<div class="login-page">
+    <div class="row">
+        <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">    
+            <img src="assets/images/flat-avatar.png" class="login_image">
+            <h1>Hospital Churruca <small>Servicio de Cirugía</small></h1>
+            <form name="projectForm" method="POST" layout="column" layout-align="center center" class="form-content">
+                <md-input-container class="form-group">
+                    <label>Usuario</label>
+                    <input required name="username" ng-value="" ng-model="form.username">
+                    <div ng-messages="projectForm.username.$error" ng-if="projectForm.username.$touched">
+                        <div ng-message="required">Campo requerido.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="form-group">
+                    <label>Password</label>
+                    <input required name="password" type="password" ng-value="" ng-model="form.password" >
+                    <div ng-messages="projectForm.password.$error" ng-if="projectForm.password.$touched">
+                        <div ng-message="required">Campo requerido.</div>
+                    </div>
+                </md-input-container>
+                <md-button class="md-whiteframe-z1 login_button" ng-click="submit()">Login</md-button>
+                <div ng-if="error" class="login-error">{{error}}</div>
+            </form>
+            <div class="link-registrarse">
+                <a href="" ng-click="registrarse()">Regístrese ahora</a>
+            </div>
+        </div>    
+    </div>
 </div>
+

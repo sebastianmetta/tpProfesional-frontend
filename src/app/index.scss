@@ -4,6 +4,10 @@ html {
   font-family: 'Roboto Slab', serif;
 }
 
+html,body {
+  overflow: hidden;
+}
+
 [layout=row] {
   flex-direction: row;
 }

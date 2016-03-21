@@ -7,16 +7,12 @@ angular.module('myApp', [
     'ngSanitize',
     'ui.router',
     'ngResource',
+    'ngRoute',
     'ngMaterial',
     'ngMessages'])
     
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider
-            .state('page', {
-                url: '',
-                templateUrl: 'app/login/login.html',
-                controller: 'LoginCtrl'
-            })
             .state('main', {
                 url: '/main',
                 templateUrl: 'app/main/main.html',
@@ -42,7 +38,8 @@ angular.module('myApp', [
                 templateUrl: 'app/main/listadoPacientes.tmpl.html',
                 controller: 'ListadoPacientesController'
             });
-        $urlRouterProvider.otherwise('/main');    
+        $urlRouterProvider.otherwise('/login');
+        $locationProvider.html5Mode(true).hashPrefix('#');    
     })
 
     .run(function($rootElement) {

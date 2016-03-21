@@ -18,11 +18,11 @@
                 <md-tooltip md-direction="top" md-visible="tooltipVisible">Busqueda Paciente</md-tooltip>
                 <md-icon md-svg-src="assets/icons/busqueda_paciente.svg" aria-label="Busqueda Pacientes"></md-icon>
               </md-button>
-              <md-button aria-label="Alta Paciente" class="md-fab md-raised md-mini" ng-click="changeView('altaPaciente')">
+              <md-button aria-label="Alta Paciente" class="md-fab md-raised md-mini" ui-sref=".altaPaciente">
                 <md-tooltip md-direction="top" md-visible="tooltipVisible">Alta Paciente</md-tooltip>
                 <md-icon md-svg-src="assets/icons/alta_paciente.svg" aria-label="Alta Paciente"></md-icon>
               </md-button>
-              <md-button aria-label="Listado Pacientes" class="md-fab md-raised md-mini" ng-click="changeView('listadoPacientes')">
+              <md-button aria-label="Listado Pacientes" class="md-fab md-raised md-mini" ui-sref=".listadoPacientes">
                 <md-tooltip md-direction="top" md-visible="tooltipVisible">Listado Pacientes</md-tooltip>
                 <md-icon md-svg-src="assets/icons/modificacion_paciente.svg" aria-label="Listado Pacientes"></md-icon>
               </md-button>
@@ -31,7 +31,9 @@
         </div>
       </md-content>
     </md-sidenav>
-    <md-content ng-include="contentUrl" class="panelDinamico"></md-content>
+    <md-content>
+      <div ui-view></div>
+    </md-content>
   </div>
 </div>
 

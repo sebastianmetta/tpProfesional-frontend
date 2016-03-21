@@ -28,9 +28,5 @@
 			      $scope.customFullscreen = (wantsFullScreen === true);
 			    });
 			  };
-
-			  $scope.changeView = function (view) {
-    		  $scope.contentUrl = 'app/main/' + view + '.tmpl.html';
-			  };
       }
 })();

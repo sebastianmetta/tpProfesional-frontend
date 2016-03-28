@@ -18,8 +18,11 @@
                         <div ng-message="required">Campo requerido.</div>
                     </div>
                 </md-input-container>
-                <md-button class="md-whiteframe-z1 login_button" ng-click="submit()">Login</md-button>
+                <md-button ng-if="!activated" class="md-whiteframe-z1 login_button" ng-click="submit()">Login</md-button>
                 <div ng-if="error" class="login-error">{{error}}</div>
+                <div ng-if="activated" layout="row" layout-sm="column" layout-align="space-around">
+                    <md-progress-circular md-mode="indeterminate" md-diameter="96"></md-progress-circular>
+                </div>
             </form>
             <div class="link-registrarse">
                 <a href="" ng-click="registrarse()">Regístrese ahora</a>

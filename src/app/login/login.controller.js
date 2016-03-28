@@ -14,9 +14,13 @@
             };
             
             $scope.error = '';
+
+            $scope.activated = false;
             
             $scope.submit = function () {
                 if ($scope.form.username.length !== 0 && $scope.form.password.length !== 0) {
+                    $scope.error = '';
+                    $scope.activated = true;
                     Authentication.authenticate($scope.form,
                         function(data) {
                             $cookies.put('username', data.username);
@@ -24,6 +28,7 @@
                             $location.url('/main');
                         },
                         function() {
+                            $scope.activated = false;
                             $scope.error = 'Usuario o contraseña incorrecta';
                         }
                     );

@@ -21,10 +21,11 @@
                 if ($scope.form.username.length !== 0 && $scope.form.password.length !== 0) {
                     $scope.error = '';
                     $scope.activated = true;
-                    Authentication.authenticate($scope.form,
+                    Authentication.serviceCall.authenticate($scope.form,
                         function(data) {
                             $cookies.put('username', data.username);
                             $cookies.put('token', data.token);
+                            Authentication.setAuthenticated(true);
                             $location.url('/main');
                         },
                         function() {

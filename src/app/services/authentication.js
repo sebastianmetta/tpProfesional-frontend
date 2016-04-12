@@ -8,7 +8,19 @@
 	Authentication.$inject = ['$resource', 'Services'];
 
 	function Authentication($resource, Services) {
-        return $resource(Services.url + 'api/login', {},
+        
+        var authenticate = false;
+        
+        var interfaz = {
+            isAuthenticated: function () {
+                return authenticate;
+            },
+
+            setAuthenticated: function (state) {
+                authenticate = state;
+            },
+
+            serviceCall : $resource(Services.url + 'api/login', {},
             {
                 authenticate: {
                     method: 'POST',
@@ -16,8 +28,11 @@
                         'Content-Type': 'application/json'
                     }
                 }
-            }
-        );
+            })
+        }
+
+        return interfaz;
     }
 })();
+
 

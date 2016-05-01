@@ -38,6 +38,11 @@ angular.module('myApp', [
                 url: '/listadoPacientes',
                 templateUrl: 'app/main/listadoPacientes.tmpl.html',
                 controller: 'ListadoPacientesController'
+            })
+            .state('main.internarPacientes', {
+                url: '/internarPacientes',
+                templateUrl: 'app/main/internarPacientes.tmpl.html',
+                controller: 'InternarPacientesController'    
             });
 
         function authenticate($q, $state, $timeout, Authentication) {

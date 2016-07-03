@@ -5,3 +5,5 @@ bower_components/
 dist/
 .idea/
 .tmp/
+.project
+.tern-project

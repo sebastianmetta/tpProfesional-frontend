@@ -16,6 +16,13 @@
             </div>
         </md-input-container>
         <md-input-container>
+            <label>Sexo</label>
+            <select required name="sexo" ng-model="altaPaciente.sexo">
+		      <option value="option-1">M</option>
+		      <option value="option-2">F</option>
+		    </select>
+        </md-input-container>
+        <md-input-container>
             <label>Dirección</label>
             <input required name="direccion" ng-value="" ng-model="altaPaciente.direccion">
         </md-input-container>

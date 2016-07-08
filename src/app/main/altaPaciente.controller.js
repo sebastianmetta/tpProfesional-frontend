@@ -12,6 +12,7 @@
       	$scope.altaPaciente = {
           dni: '',
           nombreYApellido: '',
+          sexo: '',
           direccion: '',
           telefono: '',
           antecedentesFamiliares: '',

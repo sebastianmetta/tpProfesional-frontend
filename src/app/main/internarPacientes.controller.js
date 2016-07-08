@@ -1,8 +1,7 @@
 (function() {
     'use strict';
 
-    angular
-    	.module('myApp')
+    angular.module('myApp')
       .controller('InternarPacientesController', InternarPacientesController);
 
       InternarPacientesController.$inject = ['$scope', 'Paciente'];
@@ -10,18 +9,18 @@
       function InternarPacientesController($scope, Paciente, $timeout, $q) {
 
         var self = this;
-        self.simulateQuery = false;
-        self.isDisabled    = false;
-        // list of `state` value/display objects
-        self.states        = loadAll();
+        // list of `paciente` value/display objects
+        self.pacientes = loadAll();
         self.querySearch   = querySearch;
-        self.selectedItemChange = selectedItemChange;
-        self.searchTextChange   = searchTextChange;
-        self.newState = newState;
-        function newState(state) {
-          alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-        }
-
+        
+		Paciente.listadoPacientes(null, function(data) {
+			angular.forEach(data, function(value, key) {
+				this.push(value.nombreYApellido);
+			}, self.pacientes);
+		}, function() {
+		});
+        
+        
         // ******************************
         // Internal methods
         // ******************************
@@ -30,16 +29,19 @@
          * remote dataservice call.
          */
         function querySearch (query) {
-          var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-            deferred;
-          if (self.simulateQuery) {
-            deferred = $q.defer();
-            $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-            return deferred.promise;
-          } else {
-            return results;
-          }
+//          var results = query ? self.pacientes.filter( createFilterFor(query) ) : self.pacientes,
+//            deferred;
+        	var results = query ? self.pacientes.filter( createFilterFor(query) ) : self.pacientes;
+        	return results;
+//          if (self.simulateQuery) {
+//            deferred = $q.defer();
+//            $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+//            return deferred.promise;
+//          } else {
+//            return results;
+//          }
         }
+        
         function searchTextChange(text) {
           //$log.info('Text changed to ' + text);
         }
@@ -47,39 +49,30 @@
           //$log.info('Item changed to ' + JSON.stringify(item));
         }
         /**
-         * Build `states` list of key/value pairs
+         * Build `paciente` list of key/value pairs
          */
         function loadAll() {
-
-          Paciente.listadoPacientes(null,
-            function(data) {
-              $scope.pacientes = data;
-            },
-            function() {
-            }
-          );
-
-          var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-          return allStates.split(/, +/g).map( function (state) {
-            return {
-              value: state.toLowerCase(),
-              display: state
-            };
-          });
+        	if (self.pacientes!=null) {        		
+        		var allPacientes = self.pacientes.join(',');
+        		return allPacientes.split(/, +/g).map( function (paciente) {
+//        			return {
+////        				value: paciente.toLowerCase(),
+////        				display: paciente
+//        				
+//        			};
+        			paciente;
+        		});
+        	} else {
+        		return [];
+        	}
         }
         /**
          * Create filter function for a query string
          */
         function createFilterFor(query) {
           var lowercaseQuery = angular.lowercase(query);
-          return function filterFn(state) {
-            return (state.value.indexOf(lowercaseQuery) === 0);
+          return function filterFn(paciente) {
+            return (paciente.indexOf(lowercaseQuery) === 0);
           };
         }
 
